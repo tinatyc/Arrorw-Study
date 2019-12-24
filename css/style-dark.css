@@ -1,0 +1,37 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* background-color: #333; */
+  background-color: #074377;
+}
+
+
+/* 
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #074377;
+  display: -ms-flexbox;
+  display: flex;
+  text-shadow: 0 0.05rem 0.1rem rgba(134, 134, 134, 0.32);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+} */
+
+/* 
+body::before {
+  content: ' ';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/ScreenShot_arrowherohan_1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: -1;
+  filter: blur(4px) grayscale(80%);
+
+} */

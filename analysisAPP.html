@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css' />
+
+  <link rel="stylesheet" href="css/style-dark.css">
+  <title>透視 「穿雲箭」 🏹</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    body {
+      width: 100%;
+      height: auto;
+      /* background-image: url('img/bg.png');
+      background-repeat: no-repeat;
+      background-size: cover; */
+    }
+
+    .nav-item {
+      padding-left: 1.5rem !important;
+    }
+
+    #body {
+      background-color: #074377;
+    }
+
+    .jumbotron-fluid {
+      opacity: 0.5;
+    }
+
+    /* #body {s
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      opacity: 0.3;
+    } */
+    .img-arrowhan {
+      width: inherit;
+      height: auto;
+    }
+
+    .iframe-stlye {
+      height: -webkit-fill-available;
+      width: 100%;
+    }
+
+
+    .card-record {
+      display: flex;
+      flex-direction: row;
+    }
+
+    /* .card-record::before {
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+    } */
+  </style>
+</head>
+
+<body>
+  <div id="body">
+    <header id="loadNav" class=" mb-5 pb-4">
+    </header>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">透視APP</h1>
+        <p>反組譯APP，觀看其程式碼並尋找蛛絲馬跡</p>
+        <p class="lead"> 反組譯並不是壞事，而是可以讓我們更清楚自己使用的APP到底藏了什麼！<br />本網頁帶大家透視此APP到底藏了什麼秘密？</p>
+      </div>
+    </div>
+    <div class="container my-4">
+      <div class="row">
+        <div class="card-deck">
+          <div class="col-lg-6 col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">[ 解構 ] 一隻穿雲箭APP 解構紀錄</h5>
+                <img src="img/ScreenShot_arrowherohan_1.png" class="card-img-top" alt="...">
+                <p class="card-text">反組譯APP，打開潘朵拉的寶盒！<br />
+                  觀看其程式碼並尋找蛛絲馬跡，從原始碼中得到相關資訊，記載開發的相關訊息....</p>
+                <div class="card-footer">
+                  <a href="records.html" class="btn btn-primary btn-block">前往觀看</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">[ 統計 ] 鋼鐵含粉在APP中發布消息的頻率</h5>
+                <img src="img/ScreenShot_arrowherohan_6.png" class="card-img-top" alt="...">
+                <p class="card-text">統計鋼鐵含粉在APP中發布消息的頻率。<br />
+                  鋼鐵含粉每日人工回覆新聞發布次數都放在這裡了！</p>
+                <div class="card-footer">
+                  <a href="news.html" class="btn btn-primary btn-block">前往觀看</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+  </script>
+  <script>
+    $("#loadNav").load('navBar.html');
+    // $("#content").load('page/records.html');
+  </script>
+</body>
+
+</html>

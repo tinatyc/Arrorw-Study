@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css' />
+  <link rel="stylesheet" href="css/hackMD.css">
+  <link rel="stylesheet" href="css/style-dark.css">
+  <title>透視 「穿雲箭」 🏹</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    body {
+      width: 100%;
+      height: auto;
+      /* background-image: url('img/bg.png');
+      background-repeat: no-repeat;
+      background-size: cover; */
+    }
+
+    .nav-item {
+      padding-left: 1.5rem !important;
+    }
+
+    #body {
+      background-color: #074377;
+    }
+
+    .jumbotron-fluid {
+      opacity: 0.5;
+    }
+
+    .top {
+      position: fixed;
+      bottom: 5%;
+      right: 1%;
+
+    }
+
+    .top>a {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+    }
+
+    /* #body {s
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      opacity: 0.3;
+    } */
+    .img-arrowhan {
+      width: inherit;
+      height: auto;
+    }
+
+    .iframe-stlye {
+      height: -webkit-fill-available;
+      width: 100%;
+    }
+
+    .doc-content {
+      background-color: #fff;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="body">
+    <header id="loadNav" class=" mb-5 pb-4">
+    </header>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">透視APP</h1>
+        <p>反組譯APP，觀看其程式碼並尋找蛛絲馬跡</p>
+        <p class="lead"> 反組譯並不是壞事，而是可以讓我們更清楚自己使用的APP到底藏了什麼！<br />本網頁帶大家透視此APP到底藏了什麼秘密？</p>
+      </div>
+    </div>
+    <div class="container my-4">
+      <div class="doc-content">
+        <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true">
+          <h1 id="">【解構】一隻穿雲箭 解構紀錄</h1>
+          <p class="card-text"><small class="text-muted">2019年10月30日星期三 16:01</small></p>
+          <h2>先說結果：</h2>
+          <p>本開發者拆解「一支穿雲箭」這個手機APP，但背後開發者疑似為中國深圳人？以下是拆解並深入探討的解構的過程，若有錯誤或是不妥、問題，請在Github上留Issues給我，謝謝指教！</p>
+          <!-- news -->
+          <h3>相關新聞</h3>
+          <ui>
+            <li>
+              <blockquote class="blockquote">
+                <p class="mb-0"><b><a href="https://www.chinatimes.com/newspapers/20191025000560-260118?chdtv">【新聞】7年級韓粉
+                      研發挺韓APP</a></b><br />這名APP開發者是30多歲鋼鐵韓粉，昨接受本報專訪表示，開發這款APP並不是想出名，純粹不捨韓每天被誣陷，想到自己有寫程式的專長，或許能幫上忙。他自豪說，「這應該是第1個打總統選戰的APP」。
+                </p>
+                <footer class="blockquote-footer text-right">中國時報 2019/10/25
+                </footer>
+              </blockquote>
+            </li>
+            <li>
+              <blockquote class="blockquote">
+                <p class="mb-0"><b><a href="https://youtu.be/cyEU531IVcY?t=577">【影片】突破同溫層
+                      挺韓APP開發者:全民看綠真面目！ 新聞大白話20191025</a></b><br />
+                  經韓團隊認證APP！在影片中<code>09：37</code>韓辦發言人 何庭歡解說一支穿雲箭APP的身世？
+                </p>
+                <footer class="blockquote-footer text-right">TVBS 2019/10/25
+                </footer>
+              </blockquote>
+            </li>
+            <li>
+              <blockquote class="blockquote">
+                <p class="mb-0"><b><a
+                      href="https://buzzorange.com/2019/10/29/the-truth-of-hanfans-app/">【新聞】韓粉個資恐被中國鎖定？快回家檢查長輩手機！資訊專家提
+                      4
+                      疑點，揭挺韓
+                      APP「一支穿雲箭」真面目</a></b><br />
+                  「一支穿雲箭」APP ，從何而來？<b>根據《中國時報》報導，這款「一支穿雲箭」APP 是由一位 30
+                    多歲的鋼鐵韓粉開發的</b>，他因不捨韓每天被誣陷，加上自己有寫程式專長，因此自掏腰包製作這款挺韓
+                  APP，他還說這應該是第 1 個打總統選戰的 APP。
+                </p>
+                <footer class="blockquote-footer text-right">報橘 2019/10/29
+                </footer>
+              </blockquote>
+            </li>
+            <li>
+              <blockquote class="blockquote">
+                <p class="mb-0">
+                  <b><a
+                      href="https://www.storm.mg/article/1986009">【新聞】韓國瑜網路居弱勢！科技青年創「一支穿雲箭」APP　韓粉可精準掌握黑韓訊息、發動反擊</a></b><br />
+                  外傳「一支穿雲箭」APP的背景是中資，事實卻是<b>幾個支持韓國瑜的年輕人</b>，有人擁有寫程式的能力，又想為韓國瑜進一己之力，眼看民進黨網軍系統性地操作，國民黨只能一路挨打，發現韓粉的凝聚力與行動力雖然強，但大多在臉書社團或通訊軟體群組裡「取暖」或「自爽」。
+                </p>
+                <footer class="blockquote-footer text-right">風傳媒 2019-11-25
+                </footer>
+              </blockquote>
+            </li>
+          </ui>
+          <!-- news -->
+          <hr>
+          <h2>解構紀錄</h2>
+          <h3 id="">使用手機版擷取封包APP，試著擷取封包紀錄觀看來源為何？</h3>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/mOVVRzNPy50" allowfullscreen=""></iframe>
+          <p>實驗結果：此款APP為避免有心人士擷取呼叫封包設有防擷取功能！<br>
+            如影片中時間處 <code>01:00</code> 開始，開啟擷取程式並執行<code>一隻穿雲箭</code>，就無法取得相關資訊。</p>
+          <h3 id="">反組譯APP，觀看其程式碼並尋找蛛絲馬跡</h3>
+          <ol>
+            <li>首先我們必須要有APP的安裝檔 <code>.apk</code>
+              <br>
+              從各大Apk網站可以輕鬆入手 play 商店上的app原始檔<code>.apk</code>
+            </li>
+          </ol>
+          <p>
+            <img src="img/ScreenShot_arrowherohan_2.png" alt="">
+            <br />img URL: <a href="https://i.imgur.com/E1PeSlX.png" target="_blank"
+              rel="noopener">https://i.imgur.com/E1PeSlX.png</a>
+            <br />
+            來源：<a
+              href="https://apkcombo.com/tw-tw/%E4%B8%80%E6%94%AF%E7%A9%BF%E9%9B%B2%E7%AE%AD/com.arrowherohan.arrow/"
+              target="_blank" rel="noopener">apkcombo-search → 一支穿雲箭</a>
+          </p>
+          <ol start="2">
+            <li>把apk檔拿去線上反組譯網站反組譯<br>
+              google → <a
+                href="https://www.google.com.tw/search?q=apk+decompiler&amp;sxsrf=ACYBGNT7ceBUuWEVDSk1IBn1SaxaQU_pMg:1572403426528&amp;ei=4vi4XdfyH5PdmAWuxZvQBw&amp;start=0&amp;sa=N&amp;ved=0ahUKEwjX67md-8LlAhWTLqYKHa7iBno4ChDy0wMIlQE&amp;biw=1484&amp;bih=900"
+                target="_blank" rel="noopener">apk+decompiler</a>
+            </li>
+          </ol>
+          <p>得到反組譯資料原始檔</p>
+          <p>
+            <img src="img/ScreenShot_arrowherohan_3.jpg" alt="">
+            <br>→ img URL: <a href="https://i.imgur.com/51RpsXy.jpg" target="_blank"
+              rel="noopener">https://i.imgur.com/51RpsXy.jpg</a>
+          </p>
+          <p>從原始碼中可以得到設定檔，裡面記載開發的相關訊息</p>
+          <p>
+            <img src="img/ScreenShot_arrowherohan_4.jpg" alt=""><br> → img URL: <a
+              href="https://i.imgur.com/nBhKUU0.jpg" target="_blank" rel="noopener">https://i.imgur.com/nBhKUU0.jpg</a>
+          </p>
+          <ol start="3">
+            <li>查看設定檔</li>
+          </ol>
+          <p>從檔案 <code>/assets/kernel-manifest.json</code></p>
+          <blockquote>
+            <p><code>"publishedTime": "2019-09-16T21:21:42.975Z",</code></p>
+          </blockquote>
+          <p>這個訊息可以得知這個app可能2019/09/16就已經做好了。</p>
+          <p>從檔案 <code>/assets/shell-app-manifest.json</code> 可以得知更多此app的相關訊息，包括部屬到手機雙平台的商店資訊等，其中令人矚目的是這個</p>
+          <blockquote>
+            <p><code>"bundleUrl":
+                "https://d1wp6m56sqw74a.cloudfront.net/%40arrowhan%2Farrow%2F1.4%2F4ab06662502c67921c982759564ba9f1-35.0.0-android.js",</code>
+            </p>
+          </blockquote>
+          <p>相關技術知識：</p>
+          <ul>
+            <li>How Expo Works - <a href="https://docs.expo.io/versions/latest/workflow/how-expo-works/" target="_blank"
+                rel="noopener">https://docs.expo.io/versions/latest/workflow/how-expo-works/</a></li>
+            <li>Expo是如何工作的簡體 - 在生产中发布/部署Expo应用程序https://www.jianshu.com/p/7d332f3e110e</li>
+          </ul>
+          <p>運行的程式碼可以部屬在Server端，來確保App的更新狀態，也就是說運行APP的真正程式碼位置就在這。</p>
+          <h3 id="">打開潘朵拉的盒子，查看程式碼</h3>
+          <p>於是我們 <a
+              href="https://d1wp6m56sqw74a.cloudfront.net/%40arrowhan%2Farrow%2F1.4%2F4ab06662502c67921c982759564ba9f1-35.0.0-android.js"
+              target="_blank" rel="noopener">“bundleUrl”</a>
+            這個網址，打開來稍微整理一下程式碼看起來比較容易閱讀，並且使用<code>arrow</code>等相關關鍵字。
+            <br>
+            搜尋結果中，找到APP頁面的檔案路徑，檔案路徑中藏著一個開發者名字<code>linyiting</code>，便以這個名字下去搜尋他是否會相關技術開發、相關開發技術經歷有無相同等？</p>
+          <p>在開發者的github中找到一些訊息，他是中國深圳的開發者，而其中專案部分他的履歷資料，也記載著開發者的個人資料等…</p>
+          <p>雖不排除有可能同名同姓會同樣技能的開發者，<br>但比對<strong>寫作風格</strong>，這位開發者的專案庫的<a href="https://github.com/linytsysu/zihai"
+              target="_blank" rel="noopener"><code>linytsysu/zihai</code></a>這個專案裡的程式碼有跡可循！</p>
+          <p>像是 <code>author: 'linyiting'</code>
+            這部份對比下來<strong>完全和APP裡發現的檔案路徑<code>/Users/linyiting/Desktop/Arrow/arrow/</code>一模一樣</strong>！</p>
+          <p>
+            <img src="img/ScreenShot_arrowherohan_5.png" alt=""><br>
+            → img URL: <a href="https://i.imgur.com/Apcktbv.png" target="_blank"
+              rel="noopener">https://i.imgur.com/Apcktbv.png</a>
+          </p>
+          <br>
+          <p><strong>這樣是否可以合理的懷疑「一隻穿雲箭」APP的開發者就是這位來自中國深圳的開發者所撰寫？</strong>
+          </p>
+          <blockquote>
+            <p><b>附上查找時的螢幕側錄：</b></p>
+            <p>PS:若有需要請尋找本作者，轉載請告知。</p>
+          </blockquote>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/rFT-pdgNZhE" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <h4 id="">時間點整理：</h4>
+          <ul>
+            <li>02:22 比對此APP一支穿雲箭拆解後內容與安卓商店上的一支穿雲箭APP <code>application ID</code> 相同。</li>
+            <li>02:52 真正的程式碼位置網址，部屬在server端</li>
+            <li>03:50 搜尋APP程式開發者的訊息</li>
+            <li>04:50 尋找此開發者是否會使用相關技術(React Native等)</li>
+            <li>05:30 符合寫作風格與慣用署名用法</li>
+          </ul>
+          <p>以上是紀錄發現一支穿雲箭疑似來自中國開發的過程，有誤請指教，謝謝。</p>
+          <hr>
+          <h3>後記</h3>
+          <p>這篇紀錄在11月初完成。<br />10月下旬，經新聞媒體報導，這個APP為"一位"30多歲的韓國愉支持者因為會寫程式開發而成，但在後來本開發者繼續查證的過程中，在11月下旬變成"一群"熱情韓粉利用專長而開發？
+          </p>
+          <p>不論如何，身為資訊傳播者、程式開發者都應該盡「資訊資料正確性」的責任，勿作散播不實訊息、假新聞的打手！</p>
+          <footer class="blockquote-footer text-right">
+            <strong>本開發者為一位不喜歡芒果且真正庶民的前端工程師所撰寫，希望可以拯救台灣而不是像某些粉盲從的一直種下芒果的種子。</strong>
+          </footer>
+        </div>
+      </div>
+    </div>
+    <div class="top">
+      <a href="analysisAPP.html" role="button" class="btn btn-info btn-block"><i
+          class="fas fa-angle-double-left"></i>Back</a>
+    </div>
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+  </script>
+  <script>
+    $("#loadNav").load('navBar.html');
+    // $("#content").load('page/records.html');
+  </script>
+</body>
+
+</html>

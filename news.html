@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css' />
+  <link rel="stylesheet" href="css/style-dark.css">
+  <title>透視 「穿雲箭」 🏹</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+  <style>
+    /* #body {
+      width: 100%;
+      background-color: #074377;
+    } */
+
+    .authorImg {
+      width: 25px;
+      height: auto;
+    }
+
+    .ironIcon {
+      width: 100%;
+      height: auto;
+    }
+
+    .chart-box {
+      height: 400px;
+      line-height: 400px;
+      text-align: center;
+    }
+
+    #chartArea {
+      background-color: white;
+    }
+
+    .card-style {
+      width: 100%;
+      text-align: center;
+      /* border: 1px solid #fff; */
+    }
+
+    .card-columns>div {
+      /* border: 1px solid red; */
+      text-align: justify;
+    }
+
+    .jumbotron-fluid {
+      opacity: 0.5;
+    }
+
+    .next-func {
+      /* width: 50% !important; */
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 6rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="body">
+    <header id="loadNav" class=" mb-5 pb-4">
+    </header>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">鋼鐵含粉(?) </h1>
+        <p>熱心又可以被官方認證的含粉到底是誰？</p>
+        <p class="lead">到底是一個人的熱心能那麼持續的更新？還是一個團隊的操作？<br />我把APP的回覆資訊放在這裡了！<br />看倌們，自我評斷吧～( ͡° ͜ʖ ͡°)</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div id="chartArea">
+            <!--   -->
+            <div id="chartContainer" class="chart-box">
+              <div class="fa-3x ">
+                <i class="fas fa-spinner fa-spin"></i>
+              </div>
+            </div>
+            <!--  -->
+            <p class="pb-1 pl-3 text-muted">
+              截至今日發布筆數 共計: <span>{{dataLen}}</span>筆
+            </p>
+            <!-- <div v-for="item in dataArr" v-if="item.newsDate != null">
+              <p>日期：{{item.newsDate}} 共{{item.newsCount}}筆</p>
+            </div> -->
+          </div>
+          <div id="replyWhat">
+            <!--  -->
+            <div class="alert alert-primary d-flex justify-content-around" role="alert">
+              <span>【 最新10筆 】 很閒的鋼鐵含粉(?) 對新聞的回覆 ಠ_ಠ</span>
+              <span><b>最後更新時間：</b>{{lastUpdate}}</span>
+            </div>
+            <!--  -->
+            <div class="card-style">
+              <div class="card-columns">
+                <div v-for="item in items" :class="cardClass" :id="item._id" v-if="item.authorName !== '一支穿雲箭'">
+                  <div class="card-header align-items-start card-header d-flex justify-content-between">
+                    <div class="d-flex"><b>來自：</b>
+                      <span><img :src="item.authorImgURL" class="authorImg ounded"></span>
+                    </div>
+                    <div><b>聲量：</b><span>{{item.voynichScore}}</span></div>
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text"><b>新聞內文：</b><br /><span>{{item.detail}}</span></p>
+                    <a :href="item.postURL" target="_blank" class="card-link text-black-50">原始 <i
+                        class="fab fa-facebook-square">
+                        Facebook</i>
+                      連結 &nbsp;
+                      <i class="fas fa-external-link-alt"></i></a>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <!-- <img src="img/ironIdiot2.png" class="ironIcon" alt=""> -->
+                      <b>鋼鐵含粉(?)的回覆： </b><br />
+                      <span>{{item.reply}}</span>
+                    </li>
+                    <li class="list-group-item"><b>APP中 點擊數：</b><span>{{item.clickCount}}</span>
+                      &nbsp;<b>分享數：</b><span>{{item.shareCount}}</span></li>
+                    <li class="list-group-item"><b>含粉發布時間：</b><br />{{item.date}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!--  -->
+            <div class="col-md-6 offset-md-3 col-sm-12">
+              <div class="alert alert-light next-func" role="alert">
+                想要下10筆資料嗎？ 等我有時間在做吧... ( ～'ω')～
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js'></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+  </script>
+  <script src="js/api.js"></script>
+  <script src="js/news.js"></script>
+  <script>
+    $("#loadNav").load('navBar.html');
+  </script>
+</body>
+
+</html>
